@@ -1,0 +1,34 @@
+<nodes>
+    <!-- Temperature -->
+    <node>
+        <nodeId>105</nodeId>
+        <childId>0</childId>
+        <ack>0</ack>
+        <msgType>1</msgType>
+        <subType>0</subType>
+        <msg_min>15</msg_min>
+        <msg_max>45</msg_max>
+        <sendDelay>3000</sendDelay>
+    </node>
+    <!-- Humidity -->
+    <node>
+        <nodeId>105</nodeId>
+        <childId>1</childId>
+        <ack>0</ack>
+        <msgType>1</msgType>
+        <subType>1</subType>
+        <msg_min>40</msg_min>
+        <msg_max>95</msg_max>
+        <sendDelay>3000</sendDelay>
+    </node>
+    <!-- Light -->
+    <node>
+        <nodeId>106</nodeId>
+        <childId>0</childId>
+        <ack>0</ack>
+        <msgType>1</msgType>
+        <subType>2</subType>
+        <sendDelay>2000</sendDelay>
+    </node>
+
+</nodes>
