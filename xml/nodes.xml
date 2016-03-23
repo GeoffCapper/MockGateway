@@ -8,7 +8,7 @@
         <subType>0</subType>
         <msg_min>15</msg_min>
         <msg_max>45</msg_max>
-        <sendDelay>3000</sendDelay>
+        <sendDelay>10000</sendDelay>
     </node>
     <!-- Humidity -->
     <node>
@@ -19,7 +19,7 @@
         <subType>1</subType>
         <msg_min>40</msg_min>
         <msg_max>95</msg_max>
-        <sendDelay>3000</sendDelay>
+        <sendDelay>10000</sendDelay>
     </node>
     <!-- Light -->
     <node>
@@ -28,7 +28,8 @@
         <ack>0</ack>
         <msgType>1</msgType>
         <subType>2</subType>
-        <sendDelay>2000</sendDelay>
+        <sendDelay>10000</sendDelay>
+        <answerAck>1</answerAck>
     </node>
 
 </nodes>

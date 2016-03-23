@@ -10,10 +10,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import org.openhab.binding.mysensors.MySensorsBindingConstants;
 import org.openhab.binding.mysensors.internal.MySensorsMessage;
 import org.openhab.binding.mysensors.internal.MySensorsMessageParser;
 
 import conf.Conf;
+import main.Node;
+import main.NodeList;
 
 public class MockGatewayServer implements Runnable {
 
@@ -97,6 +100,35 @@ public class MockGatewayServer implements Runnable {
 
             while ((line = inStream.readLine()) != null) {
                 System.out.println(line);
+
+                MySensorsMessage msg = MySensorsMessageParser.parse(line);
+                if (msg == null) {
+                    continue;
+                }
+
+                // Did we receive an ACK?
+                if (msg.getAck() == 1) {
+                    Node node = NodeList.getNodes().getNode(msg.getNodeId(), msg.getChildId());
+                    if (node != null) {
+                        if (node.getAnswerAck() == 1) {
+                            writeMessage(msg);
+                        }
+                    }
+                }
+
+                if (msg.getNodeId() == 0) {
+                    if (msg.getChildId() == 0) {
+                        if (msg.getMsgType() == MySensorsBindingConstants.MYSENSORS_MSG_TYPE_INTERNAL) {
+                            if (msg.getAck() == 0) {
+                                if (msg.getSubType() == MySensorsBindingConstants.MYSENSORS_SUBTYPE_I_VERSION) {
+
+                                    msg.setMsg("2.0");
+                                    writeMessage(msg);
+                                }
+                            }
+                        }
+                    }
+                }
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block

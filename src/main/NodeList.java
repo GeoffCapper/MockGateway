@@ -90,6 +90,11 @@ public class NodeList {
                         node.setMsg_max(Integer.parseInt(event.asCharacters().getData()));
                         continue;
                     }
+                    if (event.asStartElement().getName().getLocalPart().equals(Conf.MOCKGATEWAY_XML_ANSWERACK)) {
+                        event = eventReader.nextEvent();
+                        node.setAnswerAck(Integer.parseInt(event.asCharacters().getData()));
+                        continue;
+                    }
                 } else if (event.isEndElement()) {
                     EndElement endElement = event.asEndElement();
                     if (endElement.getName().getLocalPart() == ("node")) {
@@ -101,6 +106,18 @@ public class NodeList {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Node getNode(int nodeId, int childId) {
+        Node returnNode = null;
+
+        for (Node node : nodes) {
+            if (node.getNodeId() == nodeId && node.getChildId() == childId) {
+                returnNode = node;
+            }
+        }
+
+        return returnNode;
     }
 
     public void printNodeList() {

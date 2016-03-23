@@ -12,4 +12,5 @@ public class Conf {
     public static String MOCKGATEWAY_XML_MSG_MIN = "msg_min";
     public static String MOCKGATEWAY_XML_MSG_MAX = "msg_max";
     public static String MOCKGATEWAY_XML_SENDDELAY = "sendDelay";
+    public static String MOCKGATEWAY_XML_ANSWERACK = "answerAck";
 }

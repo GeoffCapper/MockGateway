@@ -11,6 +11,7 @@ public class Node {
     private int msg_max = 0;
     private int sendDelay = 0;
     private long lastSend = 0;
+    private int answerAck = 0;
 
     public int getNodeId() {
         return nodeId;
@@ -90,6 +91,14 @@ public class Node {
 
     public void setLastSend(long lastSend) {
         this.lastSend = lastSend;
+    }
+
+    public int getAnswerAck() {
+        return answerAck;
+    }
+
+    public void setAnswerAck(int answerAck) {
+        this.answerAck = answerAck;
     }
 
 }
