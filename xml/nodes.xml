@@ -29,7 +29,26 @@
         <msgType>1</msgType>
         <subType>2</subType>
         <sendDelay>10000</sendDelay>
-        <answerAck>1</answerAck>
+        <answerAck>0</answerAck>
     </node>
-
+    <!-- Light/Status Request -->
+    <node>
+        <nodeId>107</nodeId>
+        <childId>0</childId>
+        <ack>0</ack>
+        <msgType>2</msgType>
+        <subType>2</subType>
+        <sendDelay>70000</sendDelay>
+        <answerAck>0</answerAck>
+    </node>
+    <!--  V_VAR Request -->
+    <node>
+        <nodeId>1</nodeId>
+        <childId>252</childId>
+        <ack>0</ack>
+        <msgType>2</msgType>
+        <subType>24</subType>
+        <sendDelay>7000</sendDelay>
+        <answerAck>0</answerAck>
+    </node>
 </nodes>

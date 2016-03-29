@@ -62,14 +62,18 @@ public class Sender implements Runnable {
                         msg.setMsgType(node.getMsgType());
                         msg.setAck(node.getAck());
 
-                        if (node.getSubType() == 2) {// It's a light!
-                            if (generateRandomBool()) {
-                                msg.setMsg("1");
-                            } else {
-                                msg.setMsg("0");
-                            }
+                        if (msg.getMsgType() == 2) { // We send a request, no content!
+                            msg.setMsg("");
                         } else {
-                            msg.setMsg(generateRandomDouble(node.getMsg_min(), node.getMsg_max()));
+                            if (node.getSubType() == 2) {// It's a light!
+                                if (generateRandomBool()) {
+                                    msg.setMsg("1");
+                                } else {
+                                    msg.setMsg("0");
+                                }
+                            } else {
+                                msg.setMsg(generateRandomDouble(node.getMsg_min(), node.getMsg_max()));
+                            }
                         }
 
                         node.setLastSend(currentTime);
